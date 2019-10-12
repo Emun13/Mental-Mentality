@@ -1,9 +1,10 @@
 <!-- Polyhack 2019
 Mental Health website: Emotion Tracker -->
 
-<!-- Sources
+<!-- Sources 
 https://www.highcharts.com/demo/heatmap
 https://gijgo.com/datepicker/example/bootstrap
+https://www.w3schools.com/howto/howto_js_rangeslider.asp
  -->
 
 
@@ -21,23 +22,59 @@ https://gijgo.com/datepicker/example/bootstrap
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-
-
-
 	<!-- Highchart sources -->
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/modules/heatmap.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<!-- emotion slider styling -->
+	<style>
+	.slidecontainer {
+	  width: 30%;
+	}
+
+	.slider {
+	  -webkit-appearance: none;
+	  width: 100%;
+	  height: 25px;
+	  background: #d3d3d3;
+	  outline: none;
+	  opacity: 0.7;
+	  -webkit-transition: .2s;
+	  transition: opacity .2s;
+	}
+
+	.slider:hover {
+	  opacity: 1;
+	}
+
+	.slider::-webkit-slider-thumb {
+	  -webkit-appearance: none;
+	  appearance: none;
+	  width: 25px;
+	  height: 25px;
+	  background: #4CAF50;
+	  cursor: pointer;
+	}
+
+	.slider::-moz-range-thumb {
+	  width: 25px;
+	  height: 25px;
+	  background: #4CAF50;
+	  cursor: pointer;
+	}
+	</style>
 
 </head>
 
 
 
 <body>
-
+        
     <center><h3>Emotion Tracker</h3></center>
 
     <!-- date picker -->
+    
     <input id="datepicker" width="270" />
     <script type="text/javascript">
         $('#datepicker').datepicker({
@@ -45,66 +82,68 @@ https://gijgo.com/datepicker/example/bootstrap
         });
     </script>
 
-    <!-- button to confirm selections -->
-    <button onclick="getAlert()">Finished!</button>
 
-<!--
-    <p> The date we clicked is: </p>
-    <p id="demo"></p> -->
-<!--
-    <script type="text/javascript">
-    	$(function getDate() {
-		    var selectedDate = $( "#from" ).datepicker( "getDate" );
-		    $("#from").datepicker( {
-		        onSelect: function(date) {
-		            alert(date);
-		            selectedDate = date;
-		        },
-		        //selectWeek: true,
-		        //inline: true,
-		        //startDate: '01/01/2000',
-		        //firstDay: 1
-		    });
-		});
-    </script> -->
+    <!-- slider -->
+    <div class="slidecontainer">
+	  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+	  <p>Value: <span id="demo"></span></p>
+	</div>
 
-<!--
+	<script>
+	var slider = document.getElementById("myRange");
+	var output = document.getElementById("demo");
+	output.innerHTML = slider.value;
+
+	slider.oninput = function() {
+	  output.innerHTML = this.value;
+	}
+	</script>
+
+
+	<!-- button to confirm selections -->
+    <button id="confirmButton" onclick="getAlert()">Finished!</button>
+
+
+
+    <!-- get date and emotion value when button is clicked -->
   <script type="text/javascript">
-    $("#datepicker").datepicker();
-    $("#button").click(function() {
-    	alert("hello world!");
+    var slider = document.getElementById("myRange");
+
+    $("#confirmButton").click(function() {
+    	//var date = ($("#datepicker").datepicker("getDate"));
       //alert($("#datepicker").datepicker("getDate"));
+      //alert(slider.value);
+      addToChart();
+
     });
   </script>
- -->
-<!--   <script>
-function getAlert() {
-	//alert("hello!")
-	//$( "#from" ).datepicker("getDate");
-	var date;
-	date = $( "#from" ).datepicker("getDate");
-	alert(date);
-	//alert($("#datepicker").datepicker("getDate"));
-}
-</script> -->
 
-<!-- <script type="text/javascript">
-	$(function() {
-    $("#datepicker").datepicker();
-    $("#datepicker").on($("#button").click(),function(){
-        var selected = $(this).val();
-        alert(selected);
-    });
-});
-</script>
- -->
+
+
 
     <!-- get heatmap from chart.js -->
     <div id="container" style="width:80%; height:400px;">
     	<script type="text/javascript" src="chart.js"></script>
 	</div>
 
-<!--     <center><iframe src="https://calendar.google.com/calendar/embed?src=mental.mentality452%40gmail.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe></center> -->
+
+
+	<!-- add date and value to heatmap -->
+	<script type="text/javascript">
+		//get date straight up doesn't work and breaks the program
+		//var date = ($("#datepicker").datepicker("getDate"));
+		function addToChart() {
+			var slider = document.getElementById("myRange");
+			var chart = Highcharts.charts[0];
+			chart.series[0].addPoint([0,6,slider.value], true, true);
+			//var data = JSON.stringify(chart.series[0].data);
+			//var printSeries = JSON.stringify(chart.series);
+			//alert(slider.value);
+			//var data = (chart.series).data;
+			//alert(data);
+		}
+	</script>
+        
 
 </body>
 
