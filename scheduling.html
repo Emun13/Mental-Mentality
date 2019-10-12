@@ -154,7 +154,6 @@
 			  <select name="Counselor">
 				  ?php
 				  	$db_connection = pg_connect("host=localhost dbname=cmhs user=postgres port=5432 password=applesauce") or die("Could not connect to the server");
-            print ("<option> $db_connection </option>);
 
 					$query = "SELECT name FROM counselor";
 
@@ -163,7 +162,7 @@
 					<!-- printf("<option value=Select a Counselor</option>"); -->
 				while ($row = pg_fetch_assoc($result)){
 
-					print ("<option> $row </option>");
+					print ("<option> $row['name'] </option>");
 
 	                                <!-- echo "<option value=\"{$row['name']}\">" . $row['name'] . "</option>"; -->
 	                                }
