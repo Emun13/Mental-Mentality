@@ -34,7 +34,7 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm
 	<!-- emotion slider styling -->
 	<style>
 	.slidecontainer {
-	  width: 30%;
+	  width: 20%;
 	}
 
 	.slider {
@@ -91,9 +91,9 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm
     <p>Enter date: <input type = "text" id = "datepicker-1"></p>
 
     <!-- slider -->
-    <p>How do you feel today?</p>
+    <p>On a scale from 1 to 10, how do you feel today?</p>
     <div class="slidecontainer">
-	  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+	  <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
 	  <p>Value: <span id="demo"></span></p>
 	</div>
 
@@ -115,7 +115,7 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm
     <!-- get date and emotion value when button is clicked -->
   <script type="text/javascript">
     $("#confirmButton").click(function() {
-      alert($("#datepicker-1").datepicker("getDate"));
+      //alert($("#datepicker-1").datepicker("getDate"));
       addToChart();
     });
   </script>
@@ -137,7 +137,7 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm
 			var month = date.getMonth();
 
 			var chart = Highcharts.charts[0];
-			chart.series[0].addPoint([month,6,slider.value], true, true);
+			chart.series[0].addPoint([month,day,slider.value], true, true);
 
 		}
 	</script>
