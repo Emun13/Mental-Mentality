@@ -1,159 +1,238 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Mental Mentality</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-crossorigin="anonymous">
-	<style>
-		body, html {
-			height: 100%;
-			margin: 0;
-		}
-		.bg_bio1 {
-			background-image: url(bio1.jpg);
-			height: 50%;
-			width: 100%;
-  		background-repeat: repeat;
-  		background-size: contain;
-  		z-index: -1;
-		}
-		.bg_bio2 {
-			background-image: url(bio2.jpg);
-			height: 50%;
-			width: 100%;
-			background-repeat: repeat;
-			background-size: contain;
-			z-index: -1;
-		}
-		.bg_bio3 {
-			background-image: url(bio3.jpg);
-			height: 50%;
-			width: 100%;
-			background-repeat: repeat;
-			background-size: contain;
-			z-index: -1;
-		}
-		.bg_bio4 {
-			background-image: url(bio4.jpg);
-			height: 50%;
-			width: 100%;
-			background-repeat: repeat;
-			background-size: contain;
-			z-index: -1;
-		}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Scheduling</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-		/* Add a black background color to the top navigation */
-		.topnav {
-		  background-color: #9ee3ff;
-		  overflow: hidden;
-			opacity: .8;
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		}
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-		/* Style the links inside the navigation bar */
-		.topnav a {
-		  float: right;
-		  color: #000000;
-		  text-align: center;
-		  padding: 14px 16px;
-		  text-decoration: none;
-		  font-size: 17px;
-		}
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <style>
+      /* Dropdown Button */
+			body, html {
+				height: 100%;
+				margin: 0;
+			}
+      .dropbtn {
+        background-color: #6bd4ff;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
 
-		/* Change the color of links on hover */
-		.topnav a:hover {
-		  background-color: #ffffff;
-		  color: black;
-		}
+			.schedule_bkdrop {
+					position: relative;
+					z-index: 10;
+					padding-bottom: 35px;
+					padding-right: -140px;
+					top: 30px;
 
-		/* Add a color to the active/current link */
-		.topnav a.active {
-		  background-color: #5ca8ff;
-		  color: white;
-		}
+					opacity: .75;
+					background-color: #ffffff;
+			}
 
-		.button {
-  		-webkit-transition-duration: 0.4s; /* Safari */
-  		transition-duration: 0.4s;
-		}
-		.button:hover {
-  		background-color: #686868; /* Green */
-  		color: white;
-		}
-		.dropdown-content a:hover {background-color: #ddd;}
+			.bg_schedule {
+				background-image: url(bio.jpg);
+				height: 100%;
+				width: 100%;
+				background-position: cover;
+				background-repeat: repeat;
+				background-size: cover;
+				z-index: -1;
+			}
 
-		/* Show the dropdown menu on hover */
-		.dropdown:hover .dropdown-content {display: block;}
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
 
-		/* Change the background color of the dropdown button when the dropdown content is shown */
-		.dropdown:hover .dropbtn {background-color: #686868;}
-		.dropbtn {
-			background-color: #000000;
-			color: white;
-			padding: 16px 100px;
-			font-size: 16px;
-			border: none;
-		}
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
 
-		.dropdown {
-			position: relative;
-			display: inline-block;
-		}
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
 
-		/* Dropdown Content (Hidden by Default) */
-		.dropdown-content {
-			display: none;
-			position: absolute;
-			background-color: #f1f1f1;
-			min-width: 160px;
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			z-index: 1;
-		}
+			#borderboi {
+				margin-top:25px;
+				border-radius: 100px;
+				margin-left: 250px;
+				margin-right: 250px;
+				padding-bottom: 50px;
+  			background: #ffffff;
+				opacity: .90;
+			}
 
-		/* Links inside the dropdown */
-		.dropdown-content a {
-			color: black;
-			padding: 34px 34px;
-			text-decoration: none;
-			display: block;
-		}
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {background-color: #ddd;}
 
-	</style>
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {display: block;}
+
+      /* Change the background color of the dropdown button when the dropdown content is shown */
+      .dropdown:hover .dropbtn {background-color: #3e8e41;}
+      .topnav a {
+      		  float: right;
+      		  color: #000000;
+      		  text-align: center;
+      		  padding: 14px 16px;
+      		  text-decoration: none;
+      		  font-size: 17px;
+      		}
+
+      		/* Change the color of links on hover */
+      		.topnav a:hover {
+      		  background-color: #ffffff;
+      		  color: black;
+      		}
+
+      		/* Add a color to the active/current link */
+      		.topnav a.active {
+      		  background-color: #5ca8ff;
+      		  color: white;
+      		}
+
+      .topnav {
+      		  background-color: #9ee3ff;
+      		  overflow: hidden;
+      			opacity: .8;
+
+      		}
+		</style>
 
 
-</head>
-
+   </head>
 <body>
 
-	<div class="bg_bio1">
-		<div class="topnav">
-	  	<a href="#calendar">Calendar</a>
-	  	<a class="active" href="bio.html">Bio</a>
-	  	<a href="scheduling.html">Scheduling</a>
-	  	<a href="#home">Home</a>
-		</div>
-		<div class="dropdown">
-			<button class="dropbtn">Counselor Names</button>
-				<div class="dropdown-content">
-					 <a href="#">Jesse Shmessy</a>
-					<a href="#">Joey Shmoey</a>
-					<a href="#">Bobby Lobby/a>
-					<a href="#">Maria Brainsalot/a>
-					<a href="#">Jack "Smack" Back</a>
+ 	<div class="topnav">
+		<a href="#mood">Mood Tracker</a>
+    <a class="active" href="bio.html">Bio</a>
+    <a href="scheduling.html">Scheduling</a>
+    <a href="index.html">Home</a>
+  </div>
+
+	<div class="jumbotron text-center" style="margin-bottom:0; opacity: 1; background-color: #ffffff">
+  	<h1>Let us get to know you!</h1>
+    <p>Give access to your therapists, and provide your background</p>
+  </div>
+
+	<div class="bg_schedule">
+          <!--          <img src="https://drive.google.com/file/d/1k7BhHsRRtCS6xSfgVeSobXO6RLzI6H99/view?usp=sharing" alt="Elephant" style="width:100%;"> -->
+
+			<div class="container">
+				<div class ="col align-self-center">
+        <div class="row align-self-center align-items-center text-center" id="borderboi">
+          <div class = "row">
+            <h2 style="margin-top:60px">Counselor</h2>
+            <h4>Choose available counselor</h4>
+              <div class="dropdown">
+                <button class="dropbtn">Counselors</button>
+                  <div class="dropdown-content">
+			  <select name="Counselor">
+				  <?php
+				  	$db_connection = pg_connect("host=localhost dbname=cmhs, user=postgres, port=5432, password=applesauce");
+
+					$result=pq_query($db_connection, SELECT name FROM counselor);
+
+					while ($row = $result->pg_fetch_assoc()){
+	                                echo "<option value=\"counselor1\">" . $row['username'] . "</option>";
+	                                }
+                                ?>
+			</select>
+
+                    <!-- <a href="#">Julie S. Ross, Ph.D.</a>
+                    <a href="#">Linda Shane Escoll, Psy.D, Ed.M.</a>
+                    <a href="#">Marilyn Downs, Ph.D.</a>
+			    					<a href="#">Julie B. Jampel, Ph.D.</a> -->
+                  </div>
+              </div>
+					</div>
+
+          <h2 style="margin-top:60px">Date</h2>
+          <h4>Choose a day in the next 2 weeks</h4>
+          	<div class="dropdown">
+              <button class="dropbtn">Dates</button>
+                <!-- <div class="dropdown-content">
+                  <a href="#">October 12</a>
+                  <a href="#">October 13</a>
+                  <a href="#">October 14</a>
+		       			</div> -->
+            </div>
+	    <?php
+	    	<select name="Date">
+                            $dates = array();
+                            for($i=0;$i<14;$i++){
+                            $timestamp = strtotime('+ '.($i).' days');
+                            $date = date('Y-m-d',$timestamp);
+                            $date_formatted = date('D, js F',$timestamp);
+                            $dates[$date] = $date_formatted;
+                            }
+                            echo "<select name=\"day1\">";
+                               foreach($dates as $key=>$value){
+                               echo "<option value=\"$key\">$value</option>";
+                               }
+                               echo "</select>";
+		?>
+	</select>
+		    <!-- </div> -->
+
+                   <!-- <div class = "row"> -->
+        	<h2 style="margin-top:60px">Available Appointments</h2>
+        	<h4>Remaining appointments</h4>
+          	<div class="dropdown">
+            	<button class="dropbtn">Appointments</button>
+              	<div class="dropdown-content">
+                	<!-- <a href="#">10:00</a>
+                  <a href="#">11:00</a>
+                  <a href="#">1:00</a>
+			    				<a href="#">2:00</a>
+			    				<a href="#">4:00</a> -->
+                </div>
+            </div>
 				</div>
+                      <!--                                 <?php
+                         $sql = mysqli_query($connection, "SELECT username FROM users");
+                         while ($row = $sql->fetch_assoc()){
+                         echo "<option value=\"owner1\">" . $row['username'] . "</option>";
+                         }
+                         ?> -->
+                   <!-- </div> -->
+      </div>
 		</div>
-		<button value="submit" style="padding-top: 15px; padding-bottom: 15px; padding-right: 72px; padding-left: 72px; ">Submit</submit>
-	</div>
 
+</div>
 
-
-	<div class="bg_bio2">
-	</div>
-	<div class="bg_bio3">
-	</div>
-	<div class="bg_bio4">
-	</div>
-
+		 <!-- </div> -->
+  <div class="jumbotron text-center" style="margin-bottom: 0">
+    <p style="margin-right: 1100px">Give Access to: </p>
+		<div class="dropdown">
+			<button class = "dropbtn">Counselors</button>
+				<div class="dropdown-content">
+					<a href="#">boiiii if you dont</a>
+					<a href="#">lets get this bred/a> 
+  </div>
 </body>
+
+</html>

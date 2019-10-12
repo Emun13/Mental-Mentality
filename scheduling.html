@@ -151,13 +151,13 @@
                 <button class="dropbtn">Counselors</button>
                   <div class="dropdown-content">
 			  <select name="Counselor">
-				  <?php
-				  	$db_connection = pg_connect("host=localhost dbname=cmhs, user=postgres, port=5432, password=applesauce");
+				  ?php
+				  	$db_connection = pg_connect("host=localhost dbname=cmhs user=postgres port=5432 password=applesauce");
 
-					$result=pq_query($db_connection, SELECT name FROM counselor);
+					$result=pq_query($db_connection, "SELECT name FROM counselor");
 
-					while ($row = $result->pg_fetch_assoc()){
-	                                echo "<option value=\"counselor1\">" . $row['username'] . "</option>";
+					while ($row = pg_fetch_assoc($result)){
+	                                echo "<option value=\"{$row['name']}\">" . $row['name'] . "</option>";
 	                                }
                                 ?>
 			</select>
