@@ -155,13 +155,14 @@
 				  ?php
 				  	$db_connection = pg_connect("host=localhost dbname=cmhs user=postgres port=5432 password=applesauce") or die("Could not connect to the server");
 
-					$query = "SELECT * FROM counselor";
+					$query = "SELECT name FROM counselor";
 
 					$result = pq_query($db_connection, $query) or die("Cannot execute query: $query");
 
 					<!-- printf("<option value=Select a Counselor</option>"); -->
-				while ($row = pg_fetch_row($result)){
-					print("<option>$row</option>");
+				while ($row = pg_fetch_assoc($result)){
+					print ("<option> $row </option>");
+
 	                                <!-- echo "<option value=\"{$row['name']}\">" . $row['name'] . "</option>"; -->
 	                                }
                                 ?>

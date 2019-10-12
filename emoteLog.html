@@ -1,0 +1,111 @@
+<!-- Polyhack 2019
+Mental Health website: Emotion Tracker -->
+
+<!-- Sources
+https://www.highcharts.com/demo/heatmap
+https://gijgo.com/datepicker/example/bootstrap
+ -->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Emotion Tracker</title>
+
+    <!-- Bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+	<!-- Highchart sources -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+
+
+
+<body>
+
+    <center><h3>Emotion Tracker</h3></center>
+
+    <!-- date picker -->
+    <input id="datepicker" width="270" />
+    <script type="text/javascript">
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap'
+        });
+    </script>
+
+    <!-- button to confirm selections -->
+    <button onclick="getAlert()">Finished!</button>
+
+<!--
+    <p> The date we clicked is: </p>
+    <p id="demo"></p> -->
+<!--
+    <script type="text/javascript">
+    	$(function getDate() {
+		    var selectedDate = $( "#from" ).datepicker( "getDate" );
+		    $("#from").datepicker( {
+		        onSelect: function(date) {
+		            alert(date);
+		            selectedDate = date;
+		        },
+		        //selectWeek: true,
+		        //inline: true,
+		        //startDate: '01/01/2000',
+		        //firstDay: 1
+		    });
+		});
+    </script> -->
+
+<!--
+  <script type="text/javascript">
+    $("#datepicker").datepicker();
+    $("#button").click(function() {
+    	alert("hello world!");
+      //alert($("#datepicker").datepicker("getDate"));
+    });
+  </script>
+ -->
+<!--   <script>
+function getAlert() {
+	//alert("hello!")
+	//$( "#from" ).datepicker("getDate");
+	var date;
+	date = $( "#from" ).datepicker("getDate");
+	alert(date);
+	//alert($("#datepicker").datepicker("getDate"));
+}
+</script> -->
+
+<!-- <script type="text/javascript">
+	$(function() {
+    $("#datepicker").datepicker();
+    $("#datepicker").on($("#button").click(),function(){
+        var selected = $(this).val();
+        alert(selected);
+    });
+});
+</script>
+ -->
+
+    <!-- get heatmap from chart.js -->
+    <div id="container" style="width:80%; height:400px;">
+    	<script type="text/javascript" src="chart.js"></script>
+	</div>
+
+<!--     <center><iframe src="https://calendar.google.com/calendar/embed?src=mental.mentality452%40gmail.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe></center> -->
+
+</body>
+
+</html>
