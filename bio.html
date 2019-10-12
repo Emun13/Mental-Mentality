@@ -11,43 +11,37 @@ crossorigin="anonymous">
 			height: 100%;
 			margin: 0;
 		}
-		.bg {
-			background-image: url(homepage.png);
-			height: 100%;
+		.bg_bio1 {
+			background-image: url(bio1.jpg);
+			height: 50%;
 			width: 100%;
-			background-position: center;
-  		background-repeat: no-repeat;
-  		background-size: cover;
+  		background-repeat: repeat;
+  		background-size: contain;
   		z-index: -1;
 		}
-		.bg_purpose {
-			background-image: url(mental-health.jpg);
-			background-size: cover;
-			height: 100%;
+		.bg_bio2 {
+			background-image: url(bio2.jpg);
+			height: 50%;
 			width: 100%;
+			background-repeat: repeat;
+			background-size: contain;
+			z-index: -1;
 		}
-		.bg_about {
-			background-image: url(jumbo_statue.jpg);
-			background-size: cover;
-			background-repeat: no-repeat;
-			height: 100%;
+		.bg_bio3 {
+			background-image: url(bio3.jpg);
+			height: 50%;
 			width: 100%;
+			background-repeat: repeat;
+			background-size: contain;
+			z-index: -1;
 		}
-		.purpose {
-			position: relative;
-			background-color: #ffffff;
-			opacity: .85;
-			padding-top: 20px;
-			font-size: 42px;
-			font-family: Monaco;
-		}
-		.about {
-			position: relative;
-			background-color: #ffffff;
-			opacity: .85;
-			padding-top: 20px;
-			font-size: 42px;
-			font-family: Monaco;
+		.bg_bio4 {
+			background-image: url(bio4.jpg);
+			height: 50%;
+			width: 100%;
+			background-repeat: repeat;
+			background-size: contain;
+			z-index: -1;
 		}
 
 		/* Add a black background color to the top navigation */
@@ -85,8 +79,45 @@ crossorigin="anonymous">
   		transition-duration: 0.4s;
 		}
 		.button:hover {
-  		background-color: #4CAF50; /* Green */
+  		background-color: #686868; /* Green */
   		color: white;
+		}
+		.dropdown-content a:hover {background-color: #ddd;}
+
+		/* Show the dropdown menu on hover */
+		.dropdown:hover .dropdown-content {display: block;}
+
+		/* Change the background color of the dropdown button when the dropdown content is shown */
+		.dropdown:hover .dropbtn {background-color: #686868;}
+		.dropbtn {
+			background-color: #000000;
+			color: white;
+			padding: 16px 100px;
+			font-size: 16px;
+			border: none;
+		}
+
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+
+		/* Dropdown Content (Hidden by Default) */
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f1f1f1;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+		}
+
+		/* Links inside the dropdown */
+		.dropdown-content a {
+			color: black;
+			padding: 34px 34px;
+			text-decoration: none;
+			display: block;
 		}
 
 	</style>
@@ -95,23 +126,34 @@ crossorigin="anonymous">
 </head>
 
 <body>
-	<div class="bg">
+
+	<div class="bg_bio1">
 		<div class="topnav">
 	  	<a href="#calendar">Calendar</a>
 	  	<a class="active" href="bio.html">Bio</a>
 	  	<a href="scheduling.html">Scheduling</a>
 	  	<a href="#home">Home</a>
 		</div>
-			<h1 style="margin: 0; position: relative; z-index: 10;
-				font-family: Monaco; font-size: 90px; text-align: center;
-				padding: 20px; top: 230px; opacity: .75; background-color: #ffffff">
-				Tufts C.M.H.S
-			</h1>
+		<div class="dropdown">
+			<button class="dropbtn">Counselor Names</button>
+				<div class="dropdown-content">
+					 <a href="#">Jesse Shmessy</a>
+					<a href="#">Joey Shmoey</a>
+					<a href="#">Bobby Lobby/a>
+					<a href="#">Maria Brainsalot/a>
+					<a href="#">Jack "Smack" Back</a>
+				</div>
+		</div>
+		<button value="submit" style="padding-top: 15px; padding-bottom: 15px; padding-right: 72px; padding-left: 72px; ">Submit</submit>
 	</div>
-	<div class="bg_purpose">
-		<div class="purpose"><center><b>Our Purpose</b></center></div>
+
+
+
+	<div class="bg_bio2">
 	</div>
-	<div class="bg_about">
-		<div class="about"><center><b>About Us</b></center></div>
+	<div class="bg_bio3">
 	</div>
+	<div class="bg_bio4">
+	</div>
+
 </body>

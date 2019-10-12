@@ -150,50 +150,52 @@
               <div class="dropdown">
                 <button class="dropbtn">Counselors</button>
                   <div class="dropdown-content">
-                    <a href="#">Julie S. Ross, Ph.D.</a>
+			  <select name="Counselor">
+				  <?php
+				  	$db_connection = pg_connect("host=localhost dbname=cmhs, user=postgres, port=5432, password=applesauce");
+
+					$result=pq_query($db_connection, SELECT name FROM counselor);
+
+					while ($row = $result->pg_fetch_assoc()){
+	                                echo "<option value=\"counselor1\">" . $row['username'] . "</option>";
+	                                }
+                                ?>
+			</select>
+
+                    <!-- <a href="#">Julie S. Ross, Ph.D.</a>
                     <a href="#">Linda Shane Escoll, Psy.D, Ed.M.</a>
                     <a href="#">Marilyn Downs, Ph.D.</a>
-			    					<a href="#">Julie B. Jampel, Ph.D.</a>
+			    					<a href="#">Julie B. Jampel, Ph.D.</a> -->
                   </div>
               </div>
 					</div>
-                      <!--<select name="owner">
-                         <?php
-                            $sql = mysqli_query($connection, "SELECT username FROM users");
-                            while ($row = $sql->fetch_assoc()){
-                            echo "<option value=\"owner1\">" . $row['username'] . "</option>";
-                            }
-                            ?>
-                         </select> -->
 
           <h2 style="margin-top:60px">Date</h2>
           <h4>Choose a day in the next 2 weeks</h4>
           	<div class="dropdown">
               <button class="dropbtn">Dates</button>
-                <div class="dropdown-content">
+                <!-- <div class="dropdown-content">
                   <a href="#">October 12</a>
                   <a href="#">October 13</a>
                   <a href="#">October 14</a>
-		       			</div>
+		       			</div> -->
             </div>
-                         <!--                         $dates = array();
+	    <?php
+	    	<select name="Date">
+                            $dates = array();
                             for($i=0;$i<14;$i++){
                             $timestamp = strtotime('+ '.($i).' days');
                             $date = date('Y-m-d',$timestamp);
-                            $date_formatted = date('D, js F Y',$timestamp);
+                            $date_formatted = date('D, js F',$timestamp);
                             $dates[$date] = $date_formatted;
                             }
-                            echo "
-                            <select name=\"day1\">
-                               ";
+                            echo "<select name=\"day1\">";
                                foreach($dates as $key=>$value){
-                               echo "
-                               <option value=\"$key\">$value</option>
-                               ";
+                               echo "<option value=\"$key\">$value</option>";
                                }
-                               echo "
-                            </select>
-                            "; -->
+                               echo "</select>";
+		?>
+	</select>
 		    <!-- </div> -->
 
                    <!-- <div class = "row"> -->
@@ -202,11 +204,11 @@
           	<div class="dropdown">
             	<button class="dropbtn">Appointments</button>
               	<div class="dropdown-content">
-                	<a href="#">10:00</a>
+                	<!-- <a href="#">10:00</a>
                   <a href="#">11:00</a>
                   <a href="#">1:00</a>
 			    				<a href="#">2:00</a>
-			    				<a href="#">4:00</a>
+			    				<a href="#">4:00</a> -->
                 </div>
             </div>
 				</div>
