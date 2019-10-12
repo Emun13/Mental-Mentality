@@ -155,10 +155,13 @@
 				  ?php
 				  	$db_connection = pg_connect("host=localhost dbname=cmhs user=postgres port=5432 password=applesauce");
 
-					$result=pq_query($db_connection, "SELECT name FROM counselor");
+					$query = "SELECT name FROM counselor";
+
+					$result = pq_query($query);
+
 					printf("<option value=Select a Counselor</option>");
-					while ($row = pg_fetch_assoc($result)){
-						printf("<option value = $row[name]>$row[name]</option>");
+					while ($row = pg_fetch_array($result)){
+						echo "<option>".$row{'counselor'} . "</option>";
 	                                <!-- echo "<option value=\"{$row['name']}\">" . $row['name'] . "</option>"; -->
 	                                }
                                 ?>
@@ -172,7 +175,7 @@
               </div>
 					</div>
 
-					<h2 style="margin-top:60px">DatezzzBBB</h2>
+					<h2 style="margin-top:60px">Date</h2>
 			                <h4>Choose a day in the next 2 weeks</h4>
 			                	<div class="dropdown">
 			                    <button class="dropbtn">Dates</button>
