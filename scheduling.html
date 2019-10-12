@@ -122,7 +122,31 @@
       		}
 		</style>
 
+<script>
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+var curr = new Date;
+var first = curr.getDate()
+var firstday = (new Date(curr.setDate(first))).toString();
+var options = "";
+for (var i = 0; i < 14; i++) {
+    var next = new Date(curr.getTime());
+    next.setDate(first + i);
+    options += '<option>' + formatDate((next.toString())) + '</option>';
+}
+$("#datemenu1").append(options);
+//$("#datemenu1").html("<option>PICK A DATE</option>");
+
+</script>
    </head>
 <body>
 
@@ -155,9 +179,10 @@
 				  	$db_connection = pg_connect("host=localhost dbname=cmhs user=postgres port=5432 password=applesauce");
 
 					$result=pq_query($db_connection, "SELECT name FROM counselor");
-
+					printf("<option value=Select a Counselor</option>")
 					while ($row = pg_fetch_assoc($result)){
-	                                echo "<option value=\"{$row['name']}\">" . $row['name'] . "</option>";
+						printf("<option value = $row[name]>$row[name]</option>");
+	                                <!-- echo "<option value=\"{$row['name']}\">" . $row['name'] . "</option>"; -->
 	                                }
                                 ?>
 			</select>
@@ -174,28 +199,11 @@
           <h4>Choose a day in the next 2 weeks</h4>
           	<div class="dropdown">
               <button class="dropbtn">Dates</button>
-                <!-- <div class="dropdown-content">
-                  <a href="#">October 12</a>
-                  <a href="#">October 13</a>
-                  <a href="#">October 14</a>
-		       			</div> -->
+	      <select class="dropdown-content" id="datemenu1">
+		    <option>Pick a date</option>
+		</select>
             </div>
-	    <?php
-	    	<select name="Date">
-                            $dates = array();
-                            for($i=0;$i<14;$i++){
-                            $timestamp = strtotime('+ '.($i).' days');
-                            $date = date('Y-m-d',$timestamp);
-                            $date_formatted = date('D, js F',$timestamp);
-                            $dates[$date] = $date_formatted;
-                            }
-                            echo "<select name=\"day1\">";
-                               foreach($dates as $key=>$value){
-                               echo "<option value=\"$key\">$value</option>";
-                               }
-                               echo "</select>";
-		?>
-	</select>
+
 		    <!-- </div> -->
 
                    <!-- <div class = "row"> -->

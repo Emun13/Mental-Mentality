@@ -76,20 +76,18 @@
       }
 
 			#borderboi {
-				margin-top:25px;
-				border-radius: 100px;
-				margin-left: 250px;
-				margin-right: 250px;
+				margin-top: 10px;
+				border-radius: 10px;
 				padding-bottom: 50px;
   			background: #ffffff;
 				opacity: .90;
 			}
 
       /* Change color of dropdown links on hover */
-      .dropdown-content a:hover {background-color: #ddd;}
+      .dropdown-content a:hover{background-color: #ddd;}
 
       /* Show the dropdown menu on hover */
-      .dropdown:hover .dropdown-content {display: block;}
+      .dropdown:hover .dropdown-content{display: block;}
 
       /* Change the background color of the dropdown button when the dropdown content is shown */
       .dropdown:hover .dropbtn {background-color: #3e8e41;}
@@ -141,98 +139,34 @@
 	<div class="bg_schedule">
           <!--          <img src="https://drive.google.com/file/d/1k7BhHsRRtCS6xSfgVeSobXO6RLzI6H99/view?usp=sharing" alt="Elephant" style="width:100%;"> -->
 
-			<div class="container">
-				<div class ="col align-self-center">
-        <div class="row align-self-center align-items-center text-center" id="borderboi">
-          <div class = "row">
-            <h2 style="margin-top:60px">Counselor</h2>
-            <h4>Choose available counselor</h4>
-              <div class="dropdown">
-                <button class="dropbtn">Counselors</button>
-                  <div class="dropdown-content">
-			  <select name="Counselor">
-				  <?php
-				  	$db_connection = pg_connect("host=localhost dbname=cmhs, user=postgres, port=5432, password=applesauce");
-
-					$result=pq_query($db_connection, SELECT name FROM counselor);
-
-					while ($row = $result->pg_fetch_assoc()){
-	                                echo "<option value=\"counselor1\">" . $row['username'] . "</option>";
-	                                }
-                                ?>
-			</select>
-
-                    <!-- <a href="#">Julie S. Ross, Ph.D.</a>
-                    <a href="#">Linda Shane Escoll, Psy.D, Ed.M.</a>
-                    <a href="#">Marilyn Downs, Ph.D.</a>
-			    					<a href="#">Julie B. Jampel, Ph.D.</a> -->
-                  </div>
-              </div>
+					<div class="container">
+					  <div class="row">
+					    <div class="col " id="borderboi">
+					      1 of 2
+					    </div>
+					    <div class="col " id="borderboi">
+					      2 of 2
+					    </div>
 					</div>
 
-          <h2 style="margin-top:60px">Date</h2>
-          <h4>Choose a day in the next 2 weeks</h4>
-          	<div class="dropdown">
-              <button class="dropbtn">Dates</button>
-                <!-- <div class="dropdown-content">
-                  <a href="#">October 12</a>
-                  <a href="#">October 13</a>
-                  <a href="#">October 14</a>
-		       			</div> -->
-            </div>
-	    <?php
-	    	<select name="Date">
-                            $dates = array();
-                            for($i=0;$i<14;$i++){
-                            $timestamp = strtotime('+ '.($i).' days');
-                            $date = date('Y-m-d',$timestamp);
-                            $date_formatted = date('D, js F',$timestamp);
-                            $dates[$date] = $date_formatted;
-                            }
-                            echo "<select name=\"day1\">";
-                               foreach($dates as $key=>$value){
-                               echo "<option value=\"$key\">$value</option>";
-                               }
-                               echo "</select>";
-		?>
-	</select>
-		    <!-- </div> -->
-
-                   <!-- <div class = "row"> -->
-        	<h2 style="margin-top:60px">Available Appointments</h2>
-        	<h4>Remaining appointments</h4>
-          	<div class="dropdown">
-            	<button class="dropbtn">Appointments</button>
-              	<div class="dropdown-content">
-                	<!-- <a href="#">10:00</a>
-                  <a href="#">11:00</a>
-                  <a href="#">1:00</a>
-			    				<a href="#">2:00</a>
-			    				<a href="#">4:00</a> -->
-                </div>
-            </div>
-				</div>
-                      <!--                                 <?php
-                         $sql = mysqli_query($connection, "SELECT username FROM users");
-                         while ($row = $sql->fetch_assoc()){
-                         echo "<option value=\"owner1\">" . $row['username'] . "</option>";
-                         }
-                         ?> -->
-                   <!-- </div> -->
-      </div>
-		</div>
-
+					</div>
 </div>
 
 		 <!-- </div> -->
-  <div class="jumbotron text-center" style="margin-bottom: 0">
-    <p style="margin-right: 1100px">Give Access to: </p>
-		<div class="dropdown">
-			<button class = "dropbtn">Counselors</button>
+  <div class="jumbotron text-center" style="margin-bottom: 0; padding-bottom: 90px">
+    <p style="margin-right: 1100px; position: relative;">Give Access to: </p>
+		<div style="margin-right: 325px; margin-top: -50px">
+		<div class="dropdown" style=" top: -55; z-index: 20; margin-top: -180px">
+			<button class = "dropbtn" style="padding-left: 50px; padding-right: 50px;">Counselors</button>
 				<div class="dropdown-content">
 					<a href="#">boiiii if you dont</a>
-					<a href="#">lets get this bred/a> 
-  </div>
+					<a href="#">lets get this bred</a>
+  		</div>
+		</div>
+		<button type="button" style="position: relative; z-index: 25; margin-right: 325px;
+			height: 40px; left: 20px; padding-left: 25px; padding-right: 25px">Submit</button>
+		</div>
+	</div>
 </body>
 
 </html>
