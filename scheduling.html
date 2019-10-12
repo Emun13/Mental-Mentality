@@ -156,6 +156,8 @@
 				  	$db_connection = pg_connect("host=localhost dbname=cmhs user=postgres port=5432 password=applesauce") or die("Could not connect to the server");
             if db_connection == false {
               print ("<option> DB CONNECTION FAILED </option>);
+            } else {
+              print ("<option> connection success </option>");
             }
 
 					$query = "SELECT name FROM counselor";
