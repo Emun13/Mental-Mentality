@@ -49,7 +49,7 @@ var emoteChart = Highcharts.chart('container', {
 
   tooltip: {
     formatter: function () {
-      return '</b> You felt <br><b>' + this.point.value + '</b>% in <br><b>' + this.series.xAxis.categories[this.point.x];
+      return this.series.xAxis.categories[this.point.x] + ' ' + this.series.yAxis.categories[this.point.y] + '</b>: <br><b>' + this.point.value + '</b>/10<br><b>' ;
       /*return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
         this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';*/
     }
