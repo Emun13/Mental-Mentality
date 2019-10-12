@@ -19,7 +19,7 @@ var emoteChart = Highcharts.chart('container', {
 
 
   title: {
-    text: "emotion picker!"
+    text: null
   },
 
   xAxis: {

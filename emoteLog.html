@@ -1,10 +1,14 @@
-<!-- Polyhack 2019
-Mental Health website: Emotion Tracker -->
+<!-- 
+Lily Zhang
+Polyhack 2019
+Mental Health website: Emotion Tracker 
+-->
 
 <!-- Sources 
 https://www.highcharts.com/demo/heatmap
 https://gijgo.com/datepicker/example/bootstrap
 https://www.w3schools.com/howto/howto_js_rangeslider.asp
+https://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm
  -->
 
 
@@ -16,11 +20,11 @@ https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
 	<title>Emotion Tracker</title>
 
-    <!-- Bootstrap -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap for datepicker -->
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+     rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 	<!-- Highchart sources -->
 	<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -65,6 +69,16 @@ https://www.w3schools.com/howto/howto_js_rangeslider.asp
 	}
 	</style>
 
+	<!-- datepicker -->
+	<!-- <input id="dp" type="text" width=270 />  -->
+	<script type="text/javascript">
+	     $(function() {
+	        $( "#datepicker-1" ).datepicker({
+	        	format: 'mm-dd-yyyy'
+	        });
+	     });
+	</script>
+
 </head>
 
 
@@ -74,16 +88,10 @@ https://www.w3schools.com/howto/howto_js_rangeslider.asp
     <center><h3>Emotion Tracker</h3></center>
 
     <!-- date picker -->
-    
-    <input id="datepicker" width="270" />
-    <script type="text/javascript">
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap'
-        });
-    </script>
-
+    <p>Enter date: <input type = "text" id = "datepicker-1"></p>
 
     <!-- slider -->
+    <p>How do you feel today?</p>
     <div class="slidecontainer">
 	  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
 	  <p>Value: <span id="demo"></span></p>
@@ -101,24 +109,16 @@ https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
 
 	<!-- button to confirm selections -->
-    <button id="confirmButton" onclick="getAlert()">Finished!</button>
-
+    <button id="confirmButton">Finished!</button>
 
 
     <!-- get date and emotion value when button is clicked -->
   <script type="text/javascript">
-    var slider = document.getElementById("myRange");
-
     $("#confirmButton").click(function() {
-    	//var date = ($("#datepicker").datepicker("getDate"));
-      //alert($("#datepicker").datepicker("getDate"));
-      //alert(slider.value);
+      alert($("#datepicker-1").datepicker("getDate"));
       addToChart();
-
     });
   </script>
-
-
 
 
     <!-- get heatmap from chart.js -->
@@ -127,20 +127,18 @@ https://www.w3schools.com/howto/howto_js_rangeslider.asp
 	</div>
 
 
-
 	<!-- add date and value to heatmap -->
 	<script type="text/javascript">
-		//get date straight up doesn't work and breaks the program
-		//var date = ($("#datepicker").datepicker("getDate"));
 		function addToChart() {
 			var slider = document.getElementById("myRange");
+
+			var date = $("#datepicker-1").datepicker("getDate");
+			var day = date.getDate();
+			var month = date.getMonth();
+
 			var chart = Highcharts.charts[0];
-			chart.series[0].addPoint([0,6,slider.value], true, true);
-			//var data = JSON.stringify(chart.series[0].data);
-			//var printSeries = JSON.stringify(chart.series);
-			//alert(slider.value);
-			//var data = (chart.series).data;
-			//alert(data);
+			chart.series[0].addPoint([month,6,slider.value], true, true);
+
 		}
 	</script>
         
