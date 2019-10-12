@@ -162,7 +162,7 @@
 					<!-- printf("<option value=Select a Counselor</option>"); -->
 				while ($row = pg_fetch_assoc($result)){
 
-					print ("<option> $row['name'] </option>");
+					print ("<option>" $row['name'] "</option>");
 
 	                                <!-- echo "<option value=\"{$row['name']}\">" . $row['name'] . "</option>"; -->
 	                                }
